@@ -1,0 +1,390 @@
+-->0 NOTE JIALIANGLI
+<--0|NOTE|Y|JIALIANGLI 
+-->0 HEAD
+<--0|HEAD|Y|
+-->1 SOUR Family Echo
+<--1|SOUR|N|Family Echo 
+-->2 WWW http://www.familyecho.com/
+<--2|WWW|N|http://www.familyecho.com/ 
+-->1 FILE Jialiang Li Family
+<--1|FILE|N|Jialiang Li Family 
+-->1 DATE 5 SEP 2017
+<--1|DATE|N|5 SEP 2017 
+-->1 DEST ANSTFILE
+<--1|DEST|N|ANSTFILE 
+-->1 GEDC
+<--1|GEDC|N|
+-->2 VERS 5.5.1
+<--2|VERS|N|5.5.1 
+-->2 FORM LINEAGE-LINKED
+<--2|FORM|N|LINEAGE-LINKED 
+-->1 SUBM @I1@
+<--1|SUBM|N|@I1@ 
+-->2 NAME Jialiang Li
+<--2|NAME|N|Jialiang Li 
+-->1 SUBN
+<--1|SUBN|N|
+-->1 CHAR UTF-8
+<--1|CHAR|N|UTF-8 
+-->0 @I1@ INDI
+<--0|INDI|Y|@I1@
+-->1 NAME Kenny /Li/
+<--1|NAME|Y|Kenny /Li/ 
+-->2 GIVN Kenny
+<--2|GIVN|N|Kenny 
+-->2 SURN Li
+<--2|SURN|N|Li 
+-->2 _MARNM Li
+<--2|_MARNM|N|Li 
+-->1 SEX M
+<--1|SEX|Y|M 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 2 JUN 1993
+<--2|DATE|Y|2 JUN 1993 
+-->1 FAMC @F1@
+<--1|FAMC|Y|@F1@ 
+-->0 @I2@ INDI
+<--0|INDI|Y|@I2@
+-->1 NAME Tom /Li/
+<--1|NAME|Y|Tom /Li/ 
+-->2 GIVN Tom
+<--2|GIVN|N|Tom 
+-->2 SURN Li
+<--2|SURN|N|Li 
+-->2 _MARNM Li
+<--2|_MARNM|N|Li 
+-->1 SEX M
+<--1|SEX|Y|M 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 7 APR 1966
+<--2|DATE|Y|7 APR 1966 
+-->1 FAMS @F1@
+<--1|FAMS|Y|@F1@ 
+-->1 FAMC @F2@
+<--1|FAMC|Y|@F2@ 
+-->0 @I3@ INDI
+<--0|INDI|Y|@I3@
+-->1 NAME Jessica /Shao/
+<--1|NAME|Y|Jessica /Shao/ 
+-->2 GIVN Jessica
+<--2|GIVN|N|Jessica 
+-->2 SURN Shao
+<--2|SURN|N|Shao 
+-->2 _MARNM Shao
+<--2|_MARNM|N|Shao 
+-->1 SEX F
+<--1|SEX|Y|F 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 7 APR 1968
+<--2|DATE|Y|7 APR 1968 
+-->1 FAMS @F1@
+<--1|FAMS|Y|@F1@ 
+-->1 FAMC @F3@
+<--1|FAMC|Y|@F3@ 
+-->0 @I4@ INDI
+<--0|INDI|Y|@I4@
+-->1 NAME David /Li/
+<--1|NAME|Y|David /Li/ 
+-->2 GIVN David
+<--2|GIVN|N|David 
+-->2 SURN Li
+<--2|SURN|N|Li 
+-->2 _MARNM Li
+<--2|_MARNM|N|Li 
+-->1 SEX M
+<--1|SEX|Y|M 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 5 JAN 1937
+<--2|DATE|Y|5 JAN 1937 
+-->1 DEAT Y
+<--1|DEAT|Y|Y 
+-->2 DATE 6 MAR 2014
+<--2|DATE|Y|6 MAR 2014 
+-->1 FAMS @F2@
+<--1|FAMS|Y|@F2@ 
+-->0 @I5@ INDI
+<--0|INDI|Y|@I5@
+-->1 NAME Joan /Feng/
+<--1|NAME|Y|Joan /Feng/ 
+-->2 GIVN Joan
+<--2|GIVN|N|Joan 
+-->2 SURN Feng
+<--2|SURN|N|Feng 
+-->2 _MARNM Feng
+<--2|_MARNM|N|Feng 
+-->1 SEX F
+<--1|SEX|Y|F 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 7 JAN 1940
+<--2|DATE|Y|7 JAN 1940 
+-->1 FAMS @F2@
+<--1|FAMS|Y|@F2@ 
+-->0 @I6@ INDI
+<--0|INDI|Y|@I6@
+-->1 NAME Sam /Shao/
+<--1|NAME|Y|Sam /Shao/ 
+-->2 GIVN Sam
+<--2|GIVN|N|Sam 
+-->2 SURN Shao
+<--2|SURN|N|Shao 
+-->2 _MARNM Shao
+<--2|_MARNM|N|Shao 
+-->1 SEX M
+<--1|SEX|Y|M 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 9 MAY 1939
+<--2|DATE|Y|9 MAY 1939 
+-->1 FAMS @F3@
+<--1|FAMS|Y|@F3@ 
+-->0 @I7@ INDI
+<--0|INDI|Y|@I7@
+-->1 NAME Jennifer /Zhong/
+<--1|NAME|Y|Jennifer /Zhong/ 
+-->2 GIVN Jennifer
+<--2|GIVN|N|Jennifer 
+-->2 SURN Zhong
+<--2|SURN|N|Zhong 
+-->2 _MARNM Zhong
+<--2|_MARNM|N|Zhong 
+-->1 SEX F
+<--1|SEX|Y|F 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 6 APR 1940
+<--2|DATE|Y|6 APR 1940 
+-->1 FAMS @F3@
+<--1|FAMS|Y|@F3@ 
+-->0 @I8@ INDI
+<--0|INDI|Y|@I8@
+-->1 NAME Andrew /Li/
+<--1|NAME|Y|Andrew /Li/ 
+-->2 GIVN Andrew
+<--2|GIVN|N|Andrew 
+-->2 SURN Li
+<--2|SURN|N|Li 
+-->2 _MARNM Li
+<--2|_MARNM|N|Li 
+-->1 SEX M
+<--1|SEX|Y|M 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 5 APR 1968
+<--2|DATE|Y|5 APR 1968 
+-->1 FAMS @F4@
+<--1|FAMS|Y|@F4@ 
+-->1 FAMS @F5@
+<--1|FAMS|Y|@F5@ 
+-->1 FAMS @F6@
+<--1|FAMS|Y|@F6@ 
+-->1 FAMC @F2@
+<--1|FAMC|Y|@F2@ 
+-->0 @I9@ INDI
+<--0|INDI|Y|@I9@
+-->1 NAME Ross /Shao/
+<--1|NAME|Y|Ross /Shao/ 
+-->2 GIVN Ross
+<--2|GIVN|N|Ross 
+-->2 SURN Shao
+<--2|SURN|N|Shao 
+-->2 _MARNM Shao
+<--2|_MARNM|N|Shao 
+-->1 SEX M
+<--1|SEX|Y|M 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 24 JUN 1970
+<--2|DATE|Y|24 JUN 1970 
+-->1 FAMC @F3@
+<--1|FAMC|Y|@F3@ 
+-->0 @I10@ INDI
+<--0|INDI|Y|@I10@
+-->1 NAME Anna /Li/
+<--1|NAME|Y|Anna /Li/ 
+-->2 GIVN Anna
+<--2|GIVN|N|Anna 
+-->2 SURN Li
+<--2|SURN|N|Li 
+-->2 _MARNM Li
+<--2|_MARNM|N|Li 
+-->1 SEX F
+<--1|SEX|Y|F 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 6 APR 1996
+<--2|DATE|Y|6 APR 1996 
+-->1 FAMC @F1@
+<--1|FAMC|Y|@F1@ 
+-->0 @I11@ INDI
+<--0|INDI|Y|@I11@
+-->1 NAME Chris /Li/
+<--1|NAME|Y|Chris /Li/ 
+-->2 GIVN Chris
+<--2|GIVN|N|Chris 
+-->2 SURN Li
+<--2|SURN|N|Li 
+-->2 _MARNM Li
+<--2|_MARNM|N|Li 
+-->1 SEX M
+<--1|SEX|Y|M 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 17 APR 2005
+<--2|DATE|Y|17 APR 2005 
+-->1 FAMC @F4@
+<--1|FAMC|Y|@F4@ 
+-->0 @I12@ INDI
+<--0|INDI|Y|@I12@
+-->1 NAME Ella /Huang/
+<--1|NAME|Y|Ella /Huang/ 
+-->2 GIVN Ella
+<--2|GIVN|N|Ella 
+-->2 SURN Huang
+<--2|SURN|N|Huang 
+-->2 _MARNM Huang
+<--2|_MARNM|N|Huang 
+-->1 SEX F
+<--1|SEX|Y|F 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 6 APR 1972
+<--2|DATE|Y|6 APR 1972 
+-->1 FAMS @F4@
+<--1|FAMS|Y|@F4@ 
+-->0 @I13@ INDI
+<--0|INDI|Y|@I13@
+-->1 NAME Haley /Li/
+<--1|NAME|Y|Haley /Li/ 
+-->2 GIVN Haley
+<--2|GIVN|N|Haley 
+-->2 SURN Li
+<--2|SURN|N|Li 
+-->2 _MARNM Li
+<--2|_MARNM|N|Li 
+-->1 SEX F
+<--1|SEX|Y|F 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 10 MAR 1997
+<--2|DATE|Y|10 MAR 1997 
+-->1 FAMC @F6@
+<--1|FAMC|Y|@F6@ 
+-->0 @I14@ INDI
+<--0|INDI|Y|@I14@
+-->1 NAME Cathy /Zhou/
+<--1|NAME|Y|Cathy /Zhou/ 
+-->2 GIVN Cathy
+<--2|GIVN|N|Cathy 
+-->2 SURN Zhou
+<--2|SURN|N|Zhou 
+-->2 _MARNM Zhou
+<--2|_MARNM|N|Zhou 
+-->1 SEX F
+<--1|SEX|Y|F 
+-->1 BIRT
+<--1|BIRT|Y|
+-->2 DATE 8 FEB 1970
+<--2|DATE|Y|8 FEB 1970 
+-->1 DEAT Y
+<--1|DEAT|Y|Y 
+-->2 DATE 4 JUN 2000
+<--2|DATE|Y|4 JUN 2000 
+-->1 FAMS @F6@
+<--1|FAMS|Y|@F6@ 
+-->0 @F1@ FAM
+<--0|FAM|Y|@F1@
+-->1 HUSB @I2@
+<--1|HUSB|Y|@I2@ 
+-->1 WIFE @I3@
+<--1|WIFE|Y|@I3@ 
+-->1 CHIL @I1@
+<--1|CHIL|Y|@I1@ 
+-->1 CHIL @I10@
+<--1|CHIL|Y|@I10@ 
+-->1 MARR
+<--1|MARR|Y|
+-->2 DATE 16 JUN 1992
+<--2|DATE|Y|16 JUN 1992 
+-->1 _CURRENT Y
+<--1|_CURRENT|N|Y 
+-->0 @F2@ FAM
+<--0|FAM|Y|@F2@
+-->1 HUSB @I4@
+<--1|HUSB|Y|@I4@ 
+-->1 WIFE @I5@
+<--1|WIFE|Y|@I5@ 
+-->1 CHIL @I2@
+<--1|CHIL|Y|@I2@ 
+-->1 CHIL @I8@
+<--1|CHIL|Y|@I8@ 
+-->1 MARR
+<--1|MARR|Y|
+-->2 DATE 27 APR 1960
+<--2|DATE|Y|27 APR 1960 
+-->1 DIV
+<--1|DIV|Y|
+-->2 DATE 6 MAR 2014
+<--2|DATE|Y|6 MAR 2014 
+-->1 _CURRENT Y
+<--1|_CURRENT|N|Y 
+-->0 @F3@ FAM
+<--0|FAM|Y|@F3@
+-->1 HUSB @I6@
+<--1|HUSB|Y|@I6@ 
+-->1 WIFE @I7@
+<--1|WIFE|Y|@I7@ 
+-->1 CHIL @I3@
+<--1|CHIL|Y|@I3@ 
+-->1 CHIL @I9@
+<--1|CHIL|Y|@I9@ 
+-->1 MARR
+<--1|MARR|Y|
+-->2 DATE 14 JUN 1962
+<--2|DATE|Y|14 JUN 1962 
+-->1 _CURRENT Y
+<--1|_CURRENT|N|Y 
+-->0 @F4@ FAM
+<--0|FAM|Y|@F4@
+-->1 HUSB @I8@
+<--1|HUSB|Y|@I8@ 
+-->1 WIFE @I12@
+<--1|WIFE|Y|@I12@ 
+-->1 CHIL @I11@
+<--1|CHIL|Y|@I11@ 
+-->1 MARR
+<--1|MARR|Y|
+-->2 DATE 8 FEB 2002
+<--2|DATE|Y|8 FEB 2002 
+-->1 _CURRENT Y
+<--1|_CURRENT|N|Y 
+-->0 @F5@ FAM
+<--0|FAM|Y|@F5@
+-->1 HUSB @I8@
+<--1|HUSB|Y|@I8@ 
+-->1 _CURRENT N
+<--1|_CURRENT|N|N 
+-->0 @F6@ FAM
+<--0|FAM|Y|@F6@
+-->1 HUSB @I8@
+<--1|HUSB|Y|@I8@ 
+-->1 WIFE @I14@
+<--1|WIFE|Y|@I14@ 
+-->1 CHIL @I13@
+<--1|CHIL|Y|@I13@ 
+-->1 MARR
+<--1|MARR|Y|
+-->2 DATE 16 APR 1994
+<--2|DATE|Y|16 APR 1994 
+-->1 DIV
+<--1|DIV|Y|
+-->2 DATE 4 JUN 2000
+<--2|DATE|Y|4 JUN 2000 
+-->1 _CURRENT N
+<--1|_CURRENT|N|N 
+-->0 TRLR
+<--0|TRLR|Y|
