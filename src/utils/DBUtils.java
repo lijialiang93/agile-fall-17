@@ -1,18 +1,25 @@
 package utils;
 
+import org.json.JSONObject;
+
 import java.sql.*;
 
 public class DBUtils {
 
-    private static final String DB_HOST = "gedcom.cvsrpee89tba.us-east-1.rds.amazonaws.com";
-    private static final String DB_NAME = "gedcom";
-    private static final String DB_USER = "agile";
-    private static final String DB_PASSWORD = "agilefall17";
-    private static final String DB_CONNECTION_STRING = String.format("jdbc:mysql://%s/%s?user=%s&password=%s", DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
+    private static final String DB_CONNECTION_STRING = "jdbc:mysql://%s/%s?user=%s&password=%s";
 
     public static Connection connect() throws Exception {
+        String config = FileUtils.read(System.getProperty("user.dir") + "/config.json");
+        JSONObject jsonObject = (JSONObject) JSONUtils.parse(config);
+
+        String host = jsonObject.getString("db_host");
+        String name = jsonObject.getString("db_name");
+        String user = jsonObject.getString("db_user");
+        String password = jsonObject.getString("db_password");
+        String connectionString = String.format(DB_CONNECTION_STRING, host, name, user, password);
+
         Class.forName("com.mysql.jdbc.Driver");
-        return DriverManager.getConnection(DB_CONNECTION_STRING);
+        return DriverManager.getConnection(connectionString);
     }
 
     public static PreparedStatement prepare(Connection connection, String sql) throws SQLException {
