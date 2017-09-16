@@ -10,7 +10,7 @@ create table `individuals` (
 );
 
 
-create table `family` (
+create table `families` (
   `id` varchar(20) not null,
   `married` date,
   `divorced` date,
