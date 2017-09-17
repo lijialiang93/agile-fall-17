@@ -1,13 +1,9 @@
 package classes;
 
 import utils.DBUtils;
+import utils.DateTimeUtils;
 
 import java.sql.ResultSet;
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.Period;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,8 +17,6 @@ public class Individual {
     public Date death;
     public int age;
     public boolean isAlive;
-
-    
     
     public Individual(String id, String name, String gender, Date birthday, Date death) {
         this.id = id;
@@ -30,28 +24,9 @@ public class Individual {
         this.gender = gender;
         this.birthday = birthday;
         this.death = death;
-        
-        this.isAlive = (this.death == null) ? true : false;
-        
-        // calculate each individual age
-        if(isAlive){
-        	LocalDate today = LocalDate.now();
-        	LocalDate birth = new java.sql.Date(birthday.getTime()).toLocalDate();
 
-        	Period p = Period.between(birth, today);
-		
-        	this.age = p.getYears();
-        	
-        }else {
-        	
-        	LocalDate dayOfDeath = new java.sql.Date(death.getTime()).toLocalDate();
-        	LocalDate birth = new java.sql.Date(birthday.getTime()).toLocalDate();
-
-        	Period p = Period.between(birth, dayOfDeath);
-		
-        	this.age = p.getYears();
-        	
-        }
+        this.isAlive = this.death == null;
+        this.age = DateTimeUtils.calculateAge(this.birthday, this.death);
     }
     
     public static List<Individual> all() throws Exception {
