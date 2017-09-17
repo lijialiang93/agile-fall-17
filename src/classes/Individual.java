@@ -23,7 +23,7 @@ public class Individual {
         this.death = death;
     }
 
-    public static List<Individual> list() throws Exception {
+    public static List<Individual> all() throws Exception {
         String sql = "select * from individuals";
         ResultSet resultSet = DBUtils.query(sql);
 

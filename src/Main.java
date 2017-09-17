@@ -16,7 +16,7 @@ public class Main {
             Family family = Family.findById("@F5@");
             System.out.println(family.members.size());
 
-            System.out.println(Family.list().size());
+            System.out.println(Family.all().size());
         } catch (Exception e) {
             e.printStackTrace();
         }

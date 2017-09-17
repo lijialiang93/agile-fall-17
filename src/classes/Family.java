@@ -20,7 +20,7 @@ public class Family {
         this.divorced = divorced;
     }
 
-    public static List<Family> list() throws Exception {
+    public static List<Family> all() throws Exception {
         String sql = "select * from families";
         ResultSet resultSet = DBUtils.query(sql);
 
