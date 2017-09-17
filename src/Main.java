@@ -1,15 +1,22 @@
+import classes.Family;
 import classes.Gedcom;
+import classes.Individual;
 import utils.DBUtils;
 import utils.FileUtils;
-
-import java.sql.ResultSet;
-import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         try {
             init(System.getProperty("user.dir") + "/input.ged");
+
+            Individual individual = Individual.findById("@I16@");
+            System.out.println(individual.name);
+
+            Family family = Family.findById("@F5@");
+            System.out.println(family.members.size());
+
+            System.out.println(Family.list().size());
         } catch (Exception e) {
             e.printStackTrace();
         }

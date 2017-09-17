@@ -1,23 +1,25 @@
-create table `individuals` (
-  `id` varchar(20) not null,
-  `name` varchar(100) not null,
-  `gender` varchar(5),
-  `birthday` date,
-  `alive` boolean,
-  `death` date,
+CREATE TABLE individuals (
+  id       VARCHAR(20)  NOT NULL UNIQUE,
+  name     VARCHAR(100) NOT NULL,
+  gender   VARCHAR(5),
+  birthday DATE,
+  death    DATE,
 
-  primary key (`id`)
+  PRIMARY KEY (id)
 );
 
 
-create table `families` (
-  `id` varchar(20) not null,
-  `married` date,
-  `divorced` date,
-  `husband_id` varchar(20),
-  `wife_id` varchar(20),
+CREATE TABLE families (
+  id       VARCHAR(20) NOT NULL UNIQUE,
+  married  DATE,
+  divorced DATE,
 
-  primary key (`id`),
-  foreign key (`husband_id`) references individuals(`id`) on delete cascade,
-  foreign key (`wife_id`) references individuals(`id`) on delete cascade
+  PRIMARY KEY (id)
+);
+
+
+CREATE TABLE individual_rel_family (
+  individual_id VARCHAR(20)          NOT NULL,
+  family_id     VARCHAR(20)          NOT NULL,
+  role          ENUM ('H', 'W', 'C') NOT NULL
 );

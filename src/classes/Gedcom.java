@@ -1,11 +1,15 @@
 package classes;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Gedcom {
 
-    public Gedcom(String input) throws GedcomException {
+    public List<Individual> individuals;
+    public List<Family> families;
+
+    public Gedcom(String input) throws Exception {
         if (validate(input)) {
             parse(input);
         } else {
@@ -18,9 +22,16 @@ public class Gedcom {
         return true;
     }
 
-    private void parse(String input) {
+    private void parse(String input) throws Exception {
         Map<String, Map<String, String>> map = parseToMap(input);
-        System.out.println(map);
+
+        for (String key : map.keySet()) {
+            if (key.startsWith("@I")) {
+                parseIndividual(key, map.get(key));
+            } else if (key.startsWith("@F")) {
+                parseFamily(key, map.get(key));
+            }
+        }
     }
 
     private Map<String, Map<String, String>> parseToMap(String input) {
@@ -65,6 +76,61 @@ public class Gedcom {
         }
 
         return map;
+    }
+
+    private void parseIndividual(String id, Map<String, String> map) throws Exception {
+        String name = map.get("NAME");
+        String gender = map.get("SEX");
+        Date birthday = map.containsKey("BIRT") ? parseDate(map.get("BIRT")) : null;
+        Date death = map.containsKey("DEAT") ? parseDate(map.get("DEAT")) : null;
+
+        Individual individual = new Individual(id, name, gender, birthday, death);
+        individual.save();
+
+        if (individuals == null) {
+            individuals = new ArrayList<>();
+        }
+        individuals.add(individual);
+    }
+
+    private void parseFamily(String id, Map<String, String> map) throws Exception {
+        Date married = map.containsKey("MARR") ? parseDate(map.get("MARR")) : null;
+        Date divorced = map.containsKey("DIV") ? parseDate(map.get("DIV")) : null;
+
+        Family family = new Family(id, married, divorced);
+
+        if (map.containsKey("WIFE")) {
+            IndividualRelFamily rel = new IndividualRelFamily(map.get("WIFE"), id, "W");
+            family.addMember(rel);
+            rel.save();
+        }
+
+        if (map.containsKey("HUSB")) {
+            IndividualRelFamily rel = new IndividualRelFamily(map.get("HUSB"), id, "H");
+            family.addMember(rel);
+            rel.save();
+        }
+
+        if (map.containsKey("CHIL")) {
+            String[] children = map.get("CHIL").split(" \\|\\|\\| ");
+            for (String child : children) {
+                IndividualRelFamily rel = new IndividualRelFamily(child, id, "C");
+                family.addMember(rel);
+                rel.save();
+            }
+        }
+
+        family.save();
+
+        if (families == null) {
+            families = new ArrayList<>();
+        }
+        families.add(family);
+    }
+
+    private Date parseDate(String date) throws Exception {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
+        return sdf.parse(date);
     }
 
     public class GedcomException extends Exception {
