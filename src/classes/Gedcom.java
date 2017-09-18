@@ -79,12 +79,13 @@ public class Gedcom {
     }
 
     private void parseIndividual(String id, Map<String, String> map) throws Exception {
+    	int iId = Integer.parseInt(id.replaceAll("[^0-9]",""));
         String name = map.get("NAME");
         String gender = map.get("SEX");
         Date birthday = map.containsKey("BIRT") ? parseDate(map.get("BIRT")) : null;
         Date death = map.containsKey("DEAT") ? parseDate(map.get("DEAT")) : null;
 
-        Individual individual = new Individual(id, name, gender, birthday, death);
+        Individual individual = new Individual(iId, name, gender, birthday, death);
         individual.save();
 
         if (individuals == null) {
@@ -94,27 +95,33 @@ public class Gedcom {
     }
 
     private void parseFamily(String id, Map<String, String> map) throws Exception {
+    	int fid = Integer.parseInt(id.replaceAll("[^0-9]",""));
         Date married = map.containsKey("MARR") ? parseDate(map.get("MARR")) : null;
         Date divorced = map.containsKey("DIV") ? parseDate(map.get("DIV")) : null;
 
-        Family family = new Family(id, married, divorced);
+        Family family = new Family(fid, married, divorced);
 
         if (map.containsKey("WIFE")) {
-            IndividualRelFamily rel = new IndividualRelFamily(map.get("WIFE"), id, "W");
+            IndividualRelFamily rel = new IndividualRelFamily(Integer.parseInt(map.get("WIFE").replaceAll("[^0-9]","")), fid, "W");
             family.addMember(rel);
             rel.save();
         }
 
         if (map.containsKey("HUSB")) {
-            IndividualRelFamily rel = new IndividualRelFamily(map.get("HUSB"), id, "H");
+            IndividualRelFamily rel = new IndividualRelFamily(Integer.parseInt(map.get("HUSB").replaceAll("[^0-9]","")), fid, "H");
             family.addMember(rel);
             rel.save();
         }
 
         if (map.containsKey("CHIL")) {
             String[] children = map.get("CHIL").split(" \\|\\|\\| ");
+            ArrayList<Integer> childId = new ArrayList<Integer>();
             for (String child : children) {
-                IndividualRelFamily rel = new IndividualRelFamily(child, id, "C");
+            	int tmp = Integer.parseInt(child.replaceAll("[^0-9]",""));
+            	childId.add(tmp);
+            }
+            for (int child : childId) {
+                IndividualRelFamily rel = new IndividualRelFamily(child, fid, "C");
                 family.addMember(rel);
                 rel.save();
             }

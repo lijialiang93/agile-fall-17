@@ -1,5 +1,5 @@
 CREATE TABLE individuals (
-  id       VARCHAR(20)  NOT NULL UNIQUE,
+  id       INTEGER      NOT NULL UNIQUE,
   name     VARCHAR(100) NOT NULL,
   gender   VARCHAR(5),
   birthday DATE,
@@ -10,7 +10,7 @@ CREATE TABLE individuals (
 
 
 CREATE TABLE families (
-  id       VARCHAR(20) NOT NULL UNIQUE,
+  id       INTEGER NOT NULL UNIQUE,
   married  DATE,
   divorced DATE,
 
@@ -19,7 +19,7 @@ CREATE TABLE families (
 
 
 CREATE TABLE individual_rel_family (
-  individual_id VARCHAR(20)          NOT NULL,
-  family_id     VARCHAR(20)          NOT NULL,
+  individual_id INTEGER	             NOT NULL,
+  family_id     INTEGER              NOT NULL,
   role          ENUM ('H', 'W', 'C') NOT NULL
 );

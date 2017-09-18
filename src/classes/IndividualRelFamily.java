@@ -8,11 +8,11 @@ import java.util.List;
 
 public class IndividualRelFamily {
 
-    public String individualId;
-    public String familyId;
+    public int individualId;
+    public int familyId;
     public String role;
 
-    public IndividualRelFamily(String iid, String fid, String role) {
+    public IndividualRelFamily(int iid, int fid, String role) {
         this.individualId = iid;
         this.familyId = fid;
         this.role = role;
@@ -25,8 +25,8 @@ public class IndividualRelFamily {
         List<IndividualRelFamily> res = new ArrayList<>();
         while (resultSet.next()) {
             res.add(new IndividualRelFamily(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
+                    resultSet.getInt(1),
+                    resultSet.getInt(2),
                     resultSet.getString(3)
             ));
         }
