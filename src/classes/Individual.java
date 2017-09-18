@@ -30,7 +30,7 @@ public class Individual {
     }
     
     public static List<Individual> all() throws Exception {
-        String sql = "select * from individuals order by id ASC";
+        String sql = "select * from individuals order by id";
         ResultSet resultSet = DBUtils.query(sql);
 
         List<Individual> res = new ArrayList<>();

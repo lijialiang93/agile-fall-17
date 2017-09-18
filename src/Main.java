@@ -1,7 +1,6 @@
 import classes.Family;
 import classes.Gedcom;
 import classes.Individual;
-import classes.IndividualRelFamily;
 import utils.DBUtils;
 import utils.FileUtils;
 import utils.PrettyTable;
@@ -13,6 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
+            clean();
             init(System.getProperty("user.dir") + "/input.ged");
 
             Individual individual = Individual.findById(16);
@@ -149,6 +149,7 @@ public class Main {
     private static void clean() throws Exception {
         DBUtils.update("delete from families where 1;");
         DBUtils.update("delete from individuals where 1;");
+        DBUtils.update("delete from individual_rel_family where 1");
     }
 
     private static void init(String file) throws Exception {
