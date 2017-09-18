@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Individual {
 
-    public String id;
+    public int id;
     public String name;
     public String gender;
     public Date birthday;
@@ -18,7 +18,7 @@ public class Individual {
     public int age;
     public boolean isAlive;
     
-    public Individual(String id, String name, String gender, Date birthday, Date death) {
+    public Individual(int id, String name, String gender, Date birthday, Date death) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -30,13 +30,13 @@ public class Individual {
     }
     
     public static List<Individual> all() throws Exception {
-        String sql = "select * from individuals";
+        String sql = "select * from individuals order by id";
         ResultSet resultSet = DBUtils.query(sql);
 
         List<Individual> res = new ArrayList<>();
         while (resultSet.next()) {
             res.add(new Individual(
-                    resultSet.getString(1),
+                    resultSet.getInt(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
                     resultSet.getDate(4),
@@ -46,14 +46,14 @@ public class Individual {
         return res;
     }
 
-    public static Individual findById(String id) throws Exception {
+    public static Individual findById(int id) throws Exception {
         String sql = "select * from individuals where id = ?";
         ResultSet resultSet = DBUtils.query(sql, id);
 
         Individual individual = null;
         if (resultSet.next()) {
             individual = new Individual(
-                    resultSet.getString(1),
+                    resultSet.getInt(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
                     resultSet.getDate(4),
