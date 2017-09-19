@@ -1,0 +1,38 @@
+Individuals:
++-----+----------------------+--------+------------+-----+-------+------------+--------+------------+
+| ID  |         Name         | Gender |  Birthday  | Age | Alive |   Death    | Child  |   Spouse   |
++-----+----------------------+--------+------------+-----+-------+------------+--------+------------+
+| I1  |  Aegon /Targaryen/   |   M    | 1980-01-13 | 37  | True  |    N/A     | {'F1'} |    N/A     |
+| I2  | Rhaegar /Targaryen/  |   M    | 1950-06-08 | 40  | False | 1990-07-08 | {'F2'} |   {'F1'}   |
+| I3  |    Lyanna /Stark/    |   F    | 1955-06-05 | 62  | True  |    N/A     | {'F4'} | {'F1',F3'} |
+| I4  |  Robert /Baratheon/  |   M    | 1940-07-09 | 77  | True  |    N/A     |  N/A   | {'F3',F5'} |
+| I5  |  Cersei /Lannister/  |   F    | 1950-08-10 | 67  | True  |    N/A     |  N/A   |   {'F5'}   |
+| I6  |   Rickard /Stark/    |   M    | 1920-05-11 | 90  | False | 2010-08-08 |  N/A   |   {'F4'}   |
+| I7  |    Lyarra /Stark/    |   F    | 1925-05-06 | 89  | False | 2015-04-09 |  N/A   |   {'F4'}   |
+| I8  |    Eddard /Stark/    |   M    | 1950-06-14 | 67  | True  |    N/A     | {'F4'} |   {'F6'}   |
+| I9  | Joffrey /Baratheon/  |   M    | 1990-02-15 | 27  | True  |    N/A     | {'F5'} |    N/A     |
+| I10 |   Catelyn /Tully/    |   F    | 1955-10-11 | 61  | True  |    N/A     |  N/A   |   {'F6'}   |
+| I11 |     Robb /Stark/     |   M    | 1975-11-22 | 41  | True  |    N/A     | {'F6'} |    N/A     |
+| I12 |     Arya /Stark/     |   F    | 1985-09-13 | 32  | True  |    N/A     | {'F6'} |    N/A     |
+| I13 |     Bran /Stark/     |   M    | 1990-07-06 | 27  | True  |    N/A     | {'F6'} |    N/A     |
+| I14 |  Aerys /Targaryen/   |   M    | 1920-07-11 | 97  | True  |    N/A     |  N/A   |   {'F2'}   |
+| I15 | Rhaella /Targaryen/  |   F    | 1925-08-09 | 92  | True  |    N/A     |  N/A   |   {'F2'}   |
+| I16 | Daenerys /Targaryen/ |   F    | 1980-05-09 | 37  | True  |    N/A     | {'F2'} |    N/A     |
+| I17 |  Gendry /Baratheon/  |   M    | 1995-07-08 | 22  | True  |    N/A     | {'F3'} |    N/A     |
+| I18 |    Hoster /Tully/    |   M    | 1910-07-12 | 89  | False | 2000-01-09 |  N/A   |    N/A     |
+| I19 |    Minisa /Tully/    |   F    | 1915-07-13 | 90  | False | 2005-09-14 |  N/A   |    N/A     |
+| I20 | Myrcella /Baratheon/ |   F    | 1995-07-10 | 22  | True  |    N/A     | {'F5'} |    N/A     |
++-----+----------------------+--------+------------+-----+-------+------------+--------+------------+
+
+Families:
++----+------------+------------+------------+---------------------+---------+---------------------+-----------------------+
+| ID |  Married   |  Divorced  | Husband ID |    Husband Name     | Wife ID |      Wife Name      |       Children        |
++----+------------+------------+------------+---------------------+---------+---------------------+-----------------------+
+| F1 | 1975-05-11 |    N/A     |     I2     | Rhaegar /Targaryen/ |   I3    |   Lyanna /Stark/    |        {'I1'}         |
+| F2 |    N/A     |    N/A     |    I14     |  Aerys /Targaryen/  |   I15   | Rhaella /Targaryen/ |     {'I16', 'I2'}     |
+| F3 | 1995-05-16 |    N/A     |     I4     | Robert /Baratheon/  |   I3    |   Lyanna /Stark/    |        {'I17'}        |
+| F4 | 1945-05-07 |    N/A     |     I6     |   Rickard /Stark/   |   I7    |   Lyarra /Stark/    |     {'I8', 'I3'}      |
+| F5 | 1970-06-12 | 1990-05-09 |     I4     | Robert /Baratheon/  |   I5    | Cersei /Lannister/  |     {'I20', 'I9'}     |
+| F6 | 1975-08-06 |    N/A     |     I8     |   Eddard /Stark/    |   I10   |   Catelyn /Tully/   | {'I13', 'I12', 'I11'} |
++----+------------+------------+------------+---------------------+---------+---------------------+-----------------------+
+
