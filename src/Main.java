@@ -15,11 +15,24 @@ public class Main {
 
 	public static void main(String[] args) {
 		try {
-			clean();
-			init(System.getProperty("user.dir") + "/input.ged");
-			printTable();
+            String dir = System.getProperty("user.dir");
 
-		} catch (Exception e) {
+			clean();
+            init(dir + "/input.ged");
+
+            PrettyTable individualTable = createIndividualTable();
+            PrettyTable familyTable = createFamilyTable();
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("Individuals:\r\n");
+            sb.append(individualTable.toString());
+            sb.append("\r\nFamilies:\r\n");
+            sb.append(familyTable.toString());
+
+            FileUtils.write(dir + "/output.txt", sb.toString());
+
+            System.out.println(sb.toString());
+        } catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -56,93 +69,92 @@ public class Main {
 		// }
 	}
 
-	private static void printTable() throws Exception {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+    private static PrettyTable createIndividualTable() throws Exception {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        List<Individual> indiList = Individual.all();
+        PrettyTable res = new PrettyTable("ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse");
 
-		List<Individual> indiList;
+        for (int i = 0; i < indiList.size(); i++) {
+            Individual indi = indiList.get(i);
+            List<IndividualRelFamily> irfList = IndividualRelFamily.findBy("individual_id", String.valueOf(indi.id));
+            IndividualRelFamily irf = null;
+            String id = "I";
+            String cFamily = "{'";
+            String sFamily = "{'";
+            String role = "";
+            id += String.valueOf(indi.id);
+            if (irfList.size() != 0) {
+                for (int j = 0; j < irfList.size(); j++) {
+                    irf = irfList.get(j);
+                    if (irf.role.equals("C")) {
+                        cFamily += "F" + String.valueOf(irf.familyId) + "',";
+                    } else if (irf.role.equals("W") || irf.role.equals("H")) {
+                        sFamily += "F" + String.valueOf(irf.familyId) + "',";
+                    }
+                    role += irf.role;
+                }
 
-		indiList = Individual.all();
+            }
+            cFamily = cFamily.substring(0, cFamily.length() - 2) + "'}";
+            sFamily = sFamily.substring(0, sFamily.length() - 2) + "'}";
+            res.addRow(id, indi.name, indi.gender, sdf.format(indi.birthday), String.valueOf(indi.age),
+                    indi.isAlive ? "True" : "False", indi.death != null ? sdf.format(indi.death) : "N/A",
+                    role.contains("C") ? cFamily : "N/A", role.contains("W") || role.contains("H") ? sFamily : "N/A");
 
-		List<Family> famList = Family.all();
+        }
 
-		PrettyTable table1 = new PrettyTable("ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child",
-				"Spouse");
-		PrettyTable table2 = new PrettyTable("ID", "Married", "Divorced", "Husband ID", "Husband Name", "Wife ID",
-				"Wife Name", "Children");
+        return res;
+    }
 
-		for (int i = 0; i < indiList.size(); i++) {
-			Individual indi = indiList.get(i);
-			List<IndividualRelFamily> irfList = IndividualRelFamily.findBy("individual_id", String.valueOf(indi.id));
-			IndividualRelFamily irf = null;
-			String id = "I";
-			String cFamily = "{'";
-			String sFamily = "{'";
-			String role = "";
-			id += String.valueOf(indi.id);
-			if (irfList.size() != 0) {
-				for (int j = 0; j < irfList.size(); j++) {
-					irf = irfList.get(j);
-					if (irf.role.equals("C")) {
-						cFamily += "F" + String.valueOf(irf.familyId) + "',";
-					} else if (irf.role.equals("W") || irf.role.equals("H")) {
-						sFamily += "F" + String.valueOf(irf.familyId) + "',";
-					}
-					role += irf.role;
-				}
+    private static PrettyTable createFamilyTable() throws Exception {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        List<Family> famList = Family.all();
+        PrettyTable res = new PrettyTable("ID", "Married", "Divorced", "Husband ID", "Husband Name", "Wife ID",
+                "Wife Name", "Children");
 
-			}
-			cFamily = cFamily.substring(0, cFamily.length() - 2) + "'}";
-			sFamily = sFamily.substring(0, sFamily.length() - 2) + "'}";
-			table1.addRow(id, indi.name, indi.gender, sdf.format(indi.birthday), String.valueOf(indi.age),
-					indi.isAlive? "True" : "False", indi.death != null ? sdf.format(indi.death) : "N/A",
-					role.contains("C") ? cFamily : "N/A", role.contains("W") || role.contains("H") ? sFamily : "N/A");
+        for (int i = 0; i < famList.size(); i++) {
+            Family fam = famList.get(i);
+            int famId = fam.id;
+            String married = null;
+            String divorced = null;
+            if (fam.married != null) {
+                married = sdf.format(fam.married);
+            }
+            if (fam.divorced != null) {
+                divorced = sdf.format(fam.divorced);
+            }
 
-		}
+            List<IndividualRelFamily> irfList = fam.members;
+            String wName = null;
+            String hName = null;
+            String wId = null;
+            String hId = null;
+            String cId = "{";
+            for (int j = 0; j < irfList.size(); j++) {
+                IndividualRelFamily irf = irfList.get(j);
+                if (irf.role.equals("W")) {
+                    wId = String.valueOf(irf.individualId);
+                    wName = Individual.findById(Integer.parseInt(wId)).name;
+                } else if (irf.role.equals("H")) {
+                    hId = String.valueOf(irf.individualId);
+                    hName = Individual.findById(Integer.parseInt(hId)).name;
+                } else if (irf.role.equals("C")) {
+                    cId += "'I" + irf.individualId + "', ";
+                }
+            }
+            hId = "I" + hId;
+            wId = "I" + wId;
+            cId = cId.substring(0, cId.length() - 2);
+            cId += "}";
 
-		for (int i = 0; i < famList.size(); i++) {
-			Family fam = famList.get(i);
-			int famId = fam.id;
-			String married = null;
-			String divorced = null;
-			if (fam.married != null) {
-				married = sdf.format(fam.married);
-			}
-			if (fam.divorced != null) {
-				divorced = sdf.format(fam.divorced);
-			}
+            res.addRow("F" + famId, married != null ? married : "N/A", divorced != null ? divorced : "N/A",
+                    hId != null ? hId : "N/A", hName != null ? hName : "N/A", wId != null ? wId : "N/A",
+                    wName != null ? wName : "N/A", cId != "{" ? cId : "N/A");
 
-			List<IndividualRelFamily> irfList = fam.members;
-			String wName = null;
-			String hName = null;
-			String wId = null;
-			String hId = null;
-			String cId = "{";
-			for (int j = 0; j < irfList.size(); j++) {
-				IndividualRelFamily irf = irfList.get(j);
-				if (irf.role.equals("W")) {
-					wId = String.valueOf(irf.individualId);
-					wName = Individual.findById(Integer.parseInt(wId)).name;
-				} else if (irf.role.equals("H")) {
-					hId = String.valueOf(irf.individualId);
-					hName = Individual.findById(Integer.parseInt(hId)).name;
-				} else if (irf.role.equals("C")) {
-					cId += "'I" + irf.individualId + "', ";
-				}
-			}
-			hId = "I" + hId;
-			wId = "I" + wId;
-			cId = cId.substring(0, cId.length() - 2);
-			cId += "}";
+        }
 
-			table2.addRow("F" + famId, married != null ? married : "N/A", divorced != null ? divorced : "N/A",
-					hId != null ? hId : "N/A", hName != null ? hName : "N/A", wId != null ? wId : "N/A",
-					wName != null ? wName : "N/A", cId != "{" ? cId : "N/A");
-
-		}
-		System.out.println(table1);
-		System.out.println(table2);
-
-	}
+        return res;
+    }
 
 	private static void clean() throws Exception {
 		DBUtils.update("delete from families where 1;");

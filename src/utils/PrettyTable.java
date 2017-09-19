@@ -1,6 +1,7 @@
 package utils;
 
 import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +37,7 @@ public class PrettyTable {
             result.append(StringUtils.center(row.get(i), getMaxSize(i) + 2));
             result.append("|");
         }
-        result.append("\n");
+        result.append("\r\n");
         return result.toString();
     }
 
@@ -49,7 +50,7 @@ public class PrettyTable {
             }
             result.append("+");
         }
-        result.append("\n");
+        result.append("\r\n");
         return result.toString();
     }
 
