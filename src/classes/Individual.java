@@ -63,6 +63,30 @@ public class Individual {
 
         return individual;
     }
+    
+    // Abdul start    
+    public static List<Individual> borninLast30Days(List<Individual> ind){
+    	 
+    	List<Individual> indiBornIn30Days = new ArrayList<>();    	
+    	for(int x = 0; x < ind.size(); x++){    		
+    		if (DateTimeUtils.calculateAgeInDays(ind.get(x).birthday) <= 30){   			
+    			indiBornIn30Days.add(ind.get(x));
+    		}
+    	}    	
+    	return indiBornIn30Days;
+    }
+    
+    @Override
+    public boolean equals(Object obj){
+    	Individual compareAgainstIndi = (Individual)obj;
+    	
+    	if(this.id == compareAgainstIndi.id){
+    		return true;
+    	}
+    	return false;
+    }
+    
+    // Abdul end
 
     public void save() throws Exception {
         String sql = "insert into individuals(id, name, gender, birthday, death) values(?, ?, ?, ?, ?)";

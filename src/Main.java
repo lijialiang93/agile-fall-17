@@ -13,14 +13,15 @@ import java.util.Locale;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		try {
             String dir = System.getProperty("user.dir");
 
 			clean();
             init(dir + "/input.ged");
 
-            PrettyTable individualTable = createIndividualTable();
+            PrettyTable individualTable = createIndividualTable(Individual.all());
+            PrettyTable borninLast30DaysTable = createIndividualTable(Individual.borninLast30Days(Individual.all()));
             PrettyTable familyTable = createFamilyTable();
 
             StringBuilder sb = new StringBuilder();
@@ -28,7 +29,9 @@ public class Main {
             sb.append(individualTable.toString());
             sb.append("\r\nFamilies:\r\n");
             sb.append(familyTable.toString());
-
+            
+            sb.append("Individuals born in the last 30 days:\r\n");
+            sb.append(borninLast30DaysTable.toString());
             FileUtils.write(dir + "/output.txt", sb.toString());
 
             System.out.println(sb.toString());
@@ -36,6 +39,8 @@ public class Main {
 			e.printStackTrace();
 		}
 
+		//Individual.borninLast30Days(Individual.all());
+		
 		// Note: The following code is for the CLI which we may need to
 		// implement later
 		//
@@ -69,9 +74,9 @@ public class Main {
 		// }
 	}
 
-    private static PrettyTable createIndividualTable() throws Exception {
+    private static PrettyTable createIndividualTable(List<Individual> indiList) throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-        List<Individual> indiList = Individual.all();
+        //List<Individual> indiList = Individual.all(); 
         PrettyTable res = new PrettyTable("ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse");
 
         for (int i = 0; i < indiList.size(); i++) {
